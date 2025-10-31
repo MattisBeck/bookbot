@@ -13,22 +13,13 @@ def get_character_count(text):
             character_count[character] = 1
     return character_count
 
-    #get multiple small dictonaries from one big and return them as a list
+    #get multiple small tuples from one big and return the sorted ones
 def get_list_from_dict(dicto):
-    dict_list = []
-    items_in_dict = dicto.items()
-    for item in items_in_dict:
-        small_dict = {}
-        small_dict["char"] = item[0]
-        small_dict["key"] = item[1]
-        dict_list.append(small_dict)
-    return dict_list
+    items_in_dict = list(dicto.items())
+    print(items_in_dict)
+    items_in_dict.sort(reverse=True, key=sort_on)
+    return items_in_dict
 
     #helper function so that sorting works
 def sort_on(items):
-    return items["key"]
-
-    #Sort list of dictonaries by key (character count)
-def sort_list_by_dict_keys(list):
-    list.sort(reverse=True, key=sort_on)
-    return list
+    return items[1]
